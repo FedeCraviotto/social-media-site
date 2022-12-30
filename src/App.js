@@ -1,7 +1,8 @@
+import Login from './views/login/login'
 function App() {
   return (
     <div>
-      Hola mundoo
+      <Login/>
     </div>
   );
 }
