@@ -12,10 +12,8 @@
         min-height: 500px;
         overflow: hidden;
         .left{
-            flex: 1; //Toma el ancho del elemento que mas ocupe, y ambos elemenetos -teniendo 1 de growth- van a medir lo mismo de ancho. En vez de usar 'width:50%'
-            // Sacar de unsplash y sino de pexels.com
+            flex: 1;
             background: linear-gradient(rgba(199, 105, 105, 0.5), rgba(28, 11, 11, 0.5)), url('../../../assets/images/login/login-left-side.jpg') center ;
-            // background: linear-gradient(rgba(199, 105, 105, 0.5), rgba(28, 11, 11, 0.5)), url('https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600') center ;
             background-size: cover;
             padding: 30px;
             display: flex;
