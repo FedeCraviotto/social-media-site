@@ -15,8 +15,8 @@ function Register(){
             <div className="right">
                 <h1>Register</h1>
                 <form action="POST">
-                    <input type="text" placeholder='Name'/>
-                    <input type="email" placeholder='Email'/>
+                    <input type="text" placeholder='Name'name='name'/>
+                    <input type="email" placeholder='Email'name='email'/>
                     <input type="text" placeholder='Username' />
                     <input type="password" placeholder='Password'/>
                     <Link to='/register'>
