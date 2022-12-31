@@ -11,7 +11,7 @@ import { createBrowserRouter,
 
 function App() {
 
-  const thereIsALoggedUser = false;
+  const thereIsALoggedUser = true;
 
   function OnlyLoggedUserRoute({children}){
     if(!thereIsALoggedUser){
@@ -19,7 +19,6 @@ function App() {
     }
     return children;
   };
-
 
   const customRouterProvider = createBrowserRouter([ 
   {
