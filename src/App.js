@@ -2,13 +2,10 @@ import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 import Home from './views/Home/Home';
 import Profile from './views/Profile/Profile';
-import Navbar from '../src/components/Navbar/Navbar'
-import LeftBar from '../src/components/Leftbar/LeftBar'
-import RightBar from '../src/components/Rightbar/RightBar'
+import Layout from './components/Layout/Layout';
 import { createBrowserRouter,
   RouterProvider,
   Route,
-  Outlet,
   Navigate
    } from 'react-router-dom';
 
@@ -23,18 +20,7 @@ function App() {
     return children;
   };
 
-  function Layout(){
-    return(
-      <div>
-        <Navbar />
-        <div style={{display:'flex'}}>
-          <LeftBar />
-          <Outlet /> {/*Parte central dinamica. Seteado en children*/}
-          <RightBar />
-        </div>
-      </div>
-    )
-  }
+
   const customRouterProvider = createBrowserRouter([ 
   {
     path:'/',
