@@ -9,7 +9,9 @@ function Layout(){
             <Navbar />
             <div className='layout'>
                 <LeftBar />
+                <div className='outlet'>
                 <Outlet /> {/*Parte central dinamica. Seteado en children*/}
+                </div>
                 <RightBar />
             </div>
         </div>

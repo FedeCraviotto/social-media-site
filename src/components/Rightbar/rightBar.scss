@@ -1,0 +1,10 @@
+.rightBar{
+    flex: 4;
+    position: sticky;
+    top: 50px;
+    height: calc(100vh - 70px);
+    overflow: scroll; // Si agregamos mas items
+   &::-webkit-scrollbar{
+    display: none;
+   }
+}

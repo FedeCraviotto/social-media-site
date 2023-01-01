@@ -1,3 +1,6 @@
 .layout {
-    display:'flex';
+    display: flex;
+    .outlet{
+        flex: 8;
+    }
 }

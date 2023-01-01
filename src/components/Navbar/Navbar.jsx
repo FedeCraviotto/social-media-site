@@ -13,7 +13,7 @@ function Navbar(){
         <div className='navbar'>
             <div className="left">
                 <Link to='/'>
-                    <span>Home Page</span>
+                    <span>Home</span>
                 </Link>
                 <HomeIcon />
                 <DarkModeIcon />
@@ -29,7 +29,7 @@ function Navbar(){
                 <NotificationIcon />
                 <div className="user">
                     <img src={sampleImage} alt="Sample Guitarrist" />
-                    <span>User name</span>
+                    <span>Fede Craviotto</span>
                 </div>
             </div>
         </div>

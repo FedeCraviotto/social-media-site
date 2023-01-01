@@ -1,9 +1,9 @@
 import './rightBar.scss';
 function RightBar(){
     return(
-    <>
-        <div>RIghtBar</div>
-    </>
+        <div className='rightBar'>
+            RIghtbar
+        </div>
     )
 };
 export default RightBar;

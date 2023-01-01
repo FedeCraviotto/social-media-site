@@ -1,7 +1,67 @@
 import './home.scss'
 function Home(){
     return(
-        <div className='home'>Este es el Home</div>
+        <div className='home'>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+            <p>Home</p>
+        </div>
     )
 };
 export default Home;

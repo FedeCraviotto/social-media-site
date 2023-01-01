@@ -1,0 +1,57 @@
+.leftBar{
+    flex: 2;
+    position: sticky;
+    top: 50px;
+    height: calc(100vh - 70px);
+    overflow: scroll; // Si agregamos mas items
+   &::-webkit-scrollbar{
+    display: none;
+   } 
+    background-color: #fff;
+    .container{
+        padding: 20px;
+        hr{
+            margin: 20px 0px;
+            // Si o si tienen que ir estas 3 propiedades juntas
+            // Sino, la linea queda demasiado gruesa, poco estetica en comparacion
+            border: none;
+            height: 0.5px;
+            background-color: lightgrey;
+        }
+        .menu{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            span{
+                font-size: 12px;
+            }
+            .user{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+
+                }
+                span{
+                    font-size: 14px;
+                }
+    
+            }
+            .item{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img{
+                    width: 30px;
+                }
+                span{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
