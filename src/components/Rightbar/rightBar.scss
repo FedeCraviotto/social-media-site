@@ -1,10 +1,56 @@
-.rightBar{
-    flex: 4;
-    position: sticky;
-    top: 50px;
-    height: calc(100vh - 70px);
-    overflow-y: scroll; // Si agregamos mas items
-   &::-webkit-scrollbar{
+.rightBar {
+  flex: 4;
+  position: sticky;
+  top: 50px;
+  height: calc(100vh - 70px);
+  overflow-y: scroll; // Si agregamos mas items
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
     display: none;
-   }
+  }
+  .container {
+    padding: 20px;
+    .item {
+      .span {
+        color: grey;
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0px;
+        .userInfo {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          span{
+            font-weight: 600;
+          }
+        }
+        .buttons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          button{
+            border: none;
+            padding: 5px;
+            color: #fff;
+            cursor: pointer;
+            &:first-child{
+                background-color: #5271ff;
+            }
+            &:last-child{
+                background-color: #f0544f;
+            }
+          }
+        }
+      }
+    }
+  }
 }
