@@ -3,11 +3,22 @@
     position: sticky;
     top: 50px;
     height: calc(100vh - 70px);
-    overflow: scroll; // Si agregamos mas items
-   &::-webkit-scrollbar{
-    display: none;
-   } 
+    overflow-y: scroll; // Si agregamos mas items
+    overflow-x: hidden;
     background-color: #fff;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    // &::-webkit-scrollbar{
+    //     // display: none;
+    //     width: 4px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //     background-color: lightgrey;
+    // }
+    // &::-webkit-scrollbar-track {
+    //     border-radius: 8px;
+    // }
     .container{
         padding: 20px;
         hr{
