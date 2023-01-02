@@ -1,58 +1,64 @@
-
-.navbar{
+//Importamos el mixin, encerramos todo dentro de la funcion
+// Y reemplazamos valores por lo que retorne la funcion declarada en common.scss
+@import "../../common.scss";
+.navbar {
+  @include themify($themes) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     height: 50px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid themed('border');
     position: sticky;
     top: 0;
-    background-color: #fff;
+    background-color: themed(
+      "bg"
+    ); // Acorde al theme actual, va a retornar algo distinto.
+    color: themed("textColor");
     a {
-        text-decoration: none;
-        color: inherit;
+      text-decoration: none;
+      color: inherit;
     }
-    .left{
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      span {
+        font-weight: bold;
+        font-size: 20px;
+        color: themed("logo");
+      }
+      .search {
         display: flex;
         align-items: center;
-        gap: 30px;
-        span{
-            font-weight: bold;
-            font-size: 20px;
-            color: rgb(190, 52, 52);
+        gap: 10px;
+        border: 1px solid themed("border");
+        border-radius: 8px;
+        padding: 5px;
+        input {
+          border: none;
+          width: 400px;
+          background-color: transparent;
+          color: themed("textColor");
         }
-        .search{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid lightgray;
-            border-radius: 8px;
-            padding: 5px;
-            input{
-                border: none;
-                width: 400px;
-            }
-        }
+      }
     }
-    .right{
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .user {
         display: flex;
         align-items: center;
-        gap: 20px;
-        .user{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            img{
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-            span{
-
-            }
+        gap: 10px;
+        font-weight: 600;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
         }
+      }
     }
+  }
 }

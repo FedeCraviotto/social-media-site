@@ -5,7 +5,6 @@ import Profile from './views/Profile/Profile';
 import Layout from './components/Layout/Layout';
 import { createBrowserRouter,
   RouterProvider,
-  Route,
   Navigate
    } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ function App() {
     path:'/',
     element: (
     <OnlyLoggedUserRoute>
-      <Layout />
+      <Layout/>
     </OnlyLoggedUserRoute>
     ),
     children:[ // Los childen van a responder al Outlet

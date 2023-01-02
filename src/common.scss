@@ -1,0 +1,46 @@
+$themes:(
+    light:(
+        textColor:#000,
+        bg: white,
+        logo: rgb(190, 52, 52),
+        bgSoft: rgb(229, 229, 227),
+        textColorsoft: rgb(73, 69, 69),
+        border:lightgrey
+    ),
+    dark:(
+        textColor:rgb(219, 217, 217),
+        bg: #222,
+        logo: #fff,
+        bgSoft: rgb(65, 64, 64),
+        textColorSoft: rgb(191, 190, 190),
+        border:rgb(66, 65, 65)
+    ),
+);
+
+@mixin themify($themes){
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            // Segun el nombre de nuestro tema, vamos a usar los maps de arriba
+            $theme-map: () !global;
+            // Y va a agarrar a cada componenete...
+            @each $key, $submap in $map {
+                // Y a setearle nuevos valores a las mismas variables, pero dependiendo del tema elegido
+                // Va a pedir dentro de los temas, el tema elegido, y dentro de las propiedades de ese tema, el valor pasado a string de la key que coincide con alguna de la propiedades del map de arriba.
+                $value: map-get(map-get($themes, $theme),"#{$key}");
+                // Por ultima vamos a merger las propiedades, reemplazar el valor de las keys por el nuevo valor.
+                $theme-map: map-merge(
+                    $theme-map,
+                 (
+                    $key: $value,
+                 )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

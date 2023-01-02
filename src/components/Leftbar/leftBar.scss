@@ -1,12 +1,16 @@
-.leftBar{
+@import "../../common.scss";
+.leftBar {
+  @include themify($themes) {
     flex: 2;
     position: sticky;
     top: 50px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 50px);
     overflow-y: scroll; // Si agregamos mas items
     overflow-x: hidden;
-    &::-webkit-scrollbar{
-        display: none;
+    background-color: themed('bg');
+    color: themed('textColor');
+    &::-webkit-scrollbar {
+      display: none;
     }
     // &::-webkit-scrollbar{
     //     // display: none;
@@ -18,50 +22,49 @@
     // &::-webkit-scrollbar-track {
     //     border-radius: 8px;
     // }
-    .container{
-        padding: 20px;
-        hr{
-            margin: 20px 0px;
-            // Si o si tienen que ir estas 3 propiedades juntas
-            // Sino, la linea queda demasiado gruesa, poco estetica en comparacion
-            border: none;
-            height: 0.5px;
-            background-color: lightgrey;
+    .container {
+      padding: 20px;
+      hr {
+        margin: 20px 0px;
+        // Si o si tienen que ir estas 3 propiedades juntas
+        // Sino, la linea queda demasiado gruesa, poco estetica en comparacion
+        border: none;
+        height: 0.5px;
+        background-color: themed('border');
+      }
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        span {
+          font-size: 12px;
         }
-        .menu{
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            span{
-                font-size: 12px;
-            }
-            .user{
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                img{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
-
-                }
-                span{
-                    font-size: 14px;
-                }
-    
-            }
-            .item{
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                img{
-                    width: 30px;
-                }
-                span{
-                    font-size: 14px;
-                }
-            }
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          span {
+            font-size: 14px;
+          }
         }
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 30px;
+          }
+          span {
+            font-size: 14px;
+          }
+        }
+      }
     }
+  }
 }
