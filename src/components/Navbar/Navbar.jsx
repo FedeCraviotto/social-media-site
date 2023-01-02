@@ -8,12 +8,14 @@ import NotificationIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import MailIcon from "@mui/icons-material/MailOutlined";
 import UserIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
-import sampleImage from "../../assets/images/users/images/guitarrist-playing.jpg";
+// import sampleImage from "../../assets/images/users/images/guitarrist-playing.jpg";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 function Navbar() {
   const { toggleMode, darkMode } = useContext(DarkModeContext);
+  const { currentUser } = useContext(AuthContext);
   return (
     <div className="navbar">
       <div className="left">
@@ -37,8 +39,8 @@ function Navbar() {
         <MailIcon />
         <NotificationIcon />
         <div className="user">
-          <img src={sampleImage} alt="Sample Guitarrist" />
-          <span>Fede Craviotto</span>
+          <img src={currentUser.avatar} alt="Sample Guitarrist" />
+          <span>{currentUser.name}</span>
         </div>
       </div>
     </div>

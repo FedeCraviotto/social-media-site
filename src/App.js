@@ -7,13 +7,15 @@ import { createBrowserRouter,
   RouterProvider,
   Navigate
    } from 'react-router-dom';
+import { AuthContext } from './context/authContext';
+import { useContext } from 'react';
 
 function App() {
 
-  const thereIsALoggedUser = true;
+  const {currentUser} = useContext(AuthContext);
 
   function OnlyLoggedUserRoute({children}){
-    if(!thereIsALoggedUser){
+    if(!currentUser){
       return <Navigate to='/login'/>
     }
     return children;

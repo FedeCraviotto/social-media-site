@@ -1,5 +1,5 @@
 import './leftBar.scss';
-import UserIcon from '../../assets/images/users/images/guitarrist-playing.jpg';
+// import UserIcon from '../../assets/images/users/images/guitarrist-playing.jpg';
 import FriendsIcon from '../../assets/images/panels/Friends-icon.png';
 import CoursesIcon from '../../assets/images/panels/Courses-icon.png';
 import EventsIcon from '../../assets/images/panels/Events-icon.png';
@@ -13,16 +13,18 @@ import MessagesIcon from '../../assets/images/panels/Messages-icon.png';
 import TutorialsIcon from '../../assets/images/panels/Tutorials-icon.png';
 import VideosIcon from '../../assets/images/panels/Videos-icon.png';
 import WatchIcon from '../../assets/images/panels/Watch-icon.png';
-
+import { AuthContext } from "../../context/authContext";
+import {useContext} from 'react';
 
 function LeftBar(){
+    const { currentUser } = useContext(AuthContext);
     return(
         <div className='leftBar'>
             <div className="container">
                 <div className="menu">
                     <div className="user">
-                        <img src={UserIcon} alt="Sample User" />
-                        <span>Fede Craviotto</span>
+                        <img src={currentUser.avatar} alt={currentUser.name} />
+                        <span>{currentUser.name}</span>
                     </div>
                     <div className="item">
                         <img src={FriendsIcon} alt="Friends" />
