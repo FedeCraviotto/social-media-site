@@ -28,6 +28,82 @@ function RightBar(){
                         </div>
                     </div>
                 </div>
+
+                <div className="item">
+                    <span>Latest Activities</span>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <p>
+                                <span>Random User</span>  posted a new thread
+                            </p>
+                        </div>
+                        <span>1 hour ago</span>
+                    </div>
+
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <p>
+                                <span>Random User</span>  posted a new thread
+                            </p>
+                        </div>
+                        <span>1 hour ago</span>
+                    </div>  
+
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <p>
+                                <span>Random User</span>  posted a new thread
+                            </p>
+                        </div>
+                        <span>1 hour ago</span>
+                    </div>  
+
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <p>
+                                <span>Random User</span>  posted a new thread
+                            </p>
+                        </div>
+                        <span>1 hour ago</span>
+                    </div> 
+                </div>
+
+                <div className="item">
+                    <span>Online</span>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <div className="online" />
+                            <span>Random User</span>
+                        </div>
+                    </div>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <div className="online" />
+                            <span>Random User</span>
+                        </div>
+                    </div>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <div className="online" />
+                            <span>Random User</span>
+                        </div>
+                    </div>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src={userPhoto} alt="UserPhoto" />
+                            <div className="online" />
+                            <span>Random User</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )

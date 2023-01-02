@@ -3,6 +3,11 @@ Material Icons
 Icons8
 Unsplash
 Pexels.com
+cssmatic.com (/prop)
+
+## Remember the enviroment file
+On project root --> new file '.env'
+Settings if needed
 
 # Getting Started with Create React App
 

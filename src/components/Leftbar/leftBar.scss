@@ -5,7 +5,6 @@
     height: calc(100vh - 70px);
     overflow-y: scroll; // Si agregamos mas items
     overflow-x: hidden;
-    background-color: #fff;
     &::-webkit-scrollbar{
         display: none;
     }
