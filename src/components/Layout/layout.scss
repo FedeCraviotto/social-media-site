@@ -1,6 +1,10 @@
+@import '../../common.scss';
 .layout {
-    display: flex;
-    .outlet{
-        flex: 8;
+    @include themify($themes){
+        display: flex;
+        .outlet{
+            flex: 8;
+            background-color: themed('bgSoft');
+        }
     }
 }

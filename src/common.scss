@@ -5,6 +5,7 @@ $themes:(
         logo: rgb(190, 52, 52),
         bgSoft: rgb(229, 229, 227),
         textColorsoft: rgb(73, 69, 69),
+        buttonBg: slateblue,
         border:lightgrey
     ),
     dark:(
@@ -13,6 +14,7 @@ $themes:(
         logo: #fff,
         bgSoft: rgb(65, 64, 64),
         textColorSoft: rgb(191, 190, 190),
+        buttonBg: #4f4a6c,
         border:rgb(66, 65, 65)
     ),
 );

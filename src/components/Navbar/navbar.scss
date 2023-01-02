@@ -15,6 +15,7 @@
       "bg"
     ); // Acorde al theme actual, va a retornar algo distinto.
     color: themed("textColor");
+    z-index: 3;
     a {
       text-decoration: none;
       color: inherit;
