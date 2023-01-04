@@ -39,7 +39,7 @@ function Profile(){
                         </a>
                     </div>
                     <div className="center">
-                        <span>Jane Doe</span>
+                        <span>Fede Craviotto</span>
                         <div className="info">
                             <div className="item">
                                 <LocationOnOutlinedIcon />
