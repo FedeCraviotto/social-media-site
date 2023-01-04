@@ -29,6 +29,10 @@ function Login(){
                             <button onClick={handleLogin}>Login</button>
                         </Link>
                     </form>
+                    <span>Not registered yet?</span>
+                    <Link to='/register'>
+                        <button>Register</button>
+                    </Link>
                 </div>
             </div>
         </div>

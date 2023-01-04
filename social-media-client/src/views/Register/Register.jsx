@@ -23,6 +23,10 @@ function Register(){
                         <button>Register</button>
                     </Link>
                 </form>
+                <span>Do you have an account?</span>
+                <Link to='/login'>
+                    <button>Login</button>
+                </Link>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+@import '../../common.scss';
 .login{
     height: 100vh;
     background-color: #f8c387;
@@ -20,8 +21,21 @@
             flex-direction: column;
             gap: 30px;
             color: #fff;
+            justify-content: flex-start;
+            
+            @include tablet {
+                justify-content: space-evenly;
+            }
+            @include smallTablet {
+                display: none;
+                
+            }
+            
             h1{
-                font-size: 70px;
+                font-size: 60px;
+                @include tablet {
+                    font-size: 40px;
+                }
             }
             span{
                 font-size: 14px;
@@ -43,8 +57,35 @@
             flex-direction: column;
             gap: 30px;
             justify-content: center;
+
+            @include mobile {
+                padding: 18px;
+            }
+            
             h1{
                 color: rgb(64, 10, 10);
+            }
+            span{
+                display: none;
+                @include smallTablet {
+                    font-size: 12px;
+                    display: inline;
+                }
+            }
+            a{
+                display: none;
+                @include smallTablet {
+                    display: inline;
+                }
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    border: 0.5px solid rgb(54, 2, 2);
+                    color: rgb(54, 2, 2);
+                    background-color: #fff;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
             }
             form{
                 display: flex;
@@ -54,6 +95,9 @@
                     border:none;
                     border-bottom: 1px solid lightgray;
                     padding: 20px 10px;
+                }
+                a{
+                    display: inline;
                 }
                 button{
                     width: 50%;
