@@ -3,10 +3,9 @@
   @include themify($themes) {
     flex: 2;
     position: sticky;
-    top: 50px;
-    height: calc(100vh - 50px);
-    overflow-y: scroll; // Si agregamos mas items
-    overflow-x: hidden;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll; // Si agregamos mas items
     background-color: themed('bg');
     color: themed('textColor');
     &::-webkit-scrollbar {
@@ -22,6 +21,10 @@
     // &::-webkit-scrollbar-track {
     //     border-radius: 8px;
     // }
+
+    @include mobile{
+      display: none;
+    }
     .container {
       padding: 20px;
       hr {
@@ -36,32 +39,79 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        text-align: start;
+        @include largeMobile{
+          text-align: center;
+        }
         span {
           font-size: 12px;
         }
         .user {
           display: flex;
           align-items: center;
+          justify-content: unset;
           gap: 10px;
+          @include smallTablet{
+            justify-content: unset;
+          }
+          @include largeMobile{
+            justify-content: center;
+          }
           img {
             width: 30px;
             height: 30px;
             border-radius: 50%;
             object-fit: cover;
           }
+          a{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: inherit;
+            text-decoration: none;
+          }
           span {
             font-size: 14px;
+            display: inline;
+            
+            @include smallTablet{
+              font-size: 12px;
+            }
+            @include verySmallTablet{
+              font-size: 8px;
+            }
+            @include largeMobile{
+              display: none;
+            }
           }
         }
         .item {
           display: flex;
           align-items: center;
+          justify-content: unset;
           gap: 10px;
+          @include smallTablet{
+            justify-content: unset;
+          }
+          @include largeMobile{
+            justify-content: center;
+          }
           img {
             width: 30px;
           }
           span {
             font-size: 14px;
+            display: inline;
+            @include smallTablet{
+              font-size: 12px;
+            }
+            @include verySmallTablet{
+              font-size: 8px;
+            }
+            @include largeMobile{
+              display: none;
+            }
+
           }
         }
       }

@@ -26,7 +26,7 @@ function App() {
     path:'/',
     element: (
     <OnlyLoggedUserRoute>
-      <Layout/>
+      <Layout />
     </OnlyLoggedUserRoute>
     ),
     children:[ // Los childen van a responder al Outlet

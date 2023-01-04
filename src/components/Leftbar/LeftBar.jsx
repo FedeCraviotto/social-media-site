@@ -15,6 +15,7 @@ import VideosIcon from '../../assets/images/panels/Videos-icon.png';
 import WatchIcon from '../../assets/images/panels/Watch-icon.png';
 import { AuthContext } from "../../context/authContext";
 import {useContext} from 'react';
+import { Link } from 'react-router-dom';
 
 function LeftBar(){
     const { currentUser } = useContext(AuthContext);
@@ -23,8 +24,10 @@ function LeftBar(){
             <div className="container">
                 <div className="menu">
                     <div className="user">
+                    <Link to={`/profile/${currentUser.id}`}>
                         <img src={currentUser.avatar} alt={currentUser.name} />
                         <span>{currentUser.name}</span>
+                    </Link>
                     </div>
                     <div className="item">
                         <img src={FriendsIcon} alt="Friends" />

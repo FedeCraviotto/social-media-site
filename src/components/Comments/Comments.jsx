@@ -14,11 +14,18 @@ function Comments(){
             description: 'Tranquilos que van a tener laburo seguro XD'
         },
         {
+            commentId: 5,
+            userId: 2,
+            userName: 'Los Pollos Hermanos',
+            avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            description: 'COPIUM',
+        },
+        {
             commentId: 2,
             userId: 2,
             userName: 'Johnny Vargas',
             avatar: 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'LMAO'
+            description: 'LOL'
         },
         {
             commentId: 3,
@@ -33,13 +40,6 @@ function Comments(){
             userName: 'Los Pollos Hermanos',
             avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             description: 'ASHDKJASHDAS',
-        },
-        {
-            commentId: 5,
-            userId: 2,
-            userName: 'Los Pollos Hermanos',
-            avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'COPIUM',
         },
     ]
     return(

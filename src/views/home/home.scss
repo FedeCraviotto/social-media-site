@@ -1,10 +1,16 @@
-@import '../../common.scss';
-.home{
-    @include themify($themes){
-        background-color: themed('bgSoft');
-        padding: 20px 70px;
-        p{
-            color: themed('textColor');
-        }
+@import "../../common.scss";
+.home {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    padding: 20px 70px;
+    p {
+      color: themed("textColor");
     }
+    @include tablet{
+        padding: 20px;
+    }
+    @include mobile {
+      padding: 6px;
+    }
+  }
 }

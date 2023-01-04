@@ -3,17 +3,28 @@
   @include themify($themes) {
     flex: 4;
     position: sticky;
-    top: 50px;
-    height: calc(100vh - 50px);
+    top: 70px;
+    height: calc(100vh - 70px);
     overflow-y: scroll; // Si agregamos mas items
     overflow-x: hidden;
     background: themed('bgSoft');
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @include mobile{
+      display: none;
+    }
+
+    @include tablet{
+      display: none;
+    }
+
     .container {
       padding: 20px;
       .item {
+        -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+        -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         padding: 20px;
         margin-bottom: 20px;
@@ -50,14 +61,26 @@
             }
             p {
               color: themed('textColorSoft');
+              @include smallLaptop {
+                font-size: 10px;
+                word-wrap: break-word;
+              }
             }
             span {
               font-weight: 600;
               color: themed('textColor');
+              @include smallLaptop {
+                font-size: 10px;
+                word-wrap: break-word;
+              }
             }
           }
           span{
             color: gray;
+            @include smallLaptop {
+              font-size: 10px;
+              word-wrap: break-word;
+            }
           }
           .buttons {
             display: flex;
@@ -74,6 +97,9 @@
               }
               &:last-child {
                 background-color: #f0544f;
+              }
+              @include smallLaptop {
+                font-size: 10px;
               }
             }
           }
