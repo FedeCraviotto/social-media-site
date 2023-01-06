@@ -1,1 +1,5 @@
+.env
 node_modules
+
+git rm env.local --cached
+git rm env.staging --cached

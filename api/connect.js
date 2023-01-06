@@ -1,6 +1,6 @@
+import mysql from 'mysql';
 import dotenv from 'dotenv';
 dotenv.config();
-import mysql from 'mysql';
 
 const PASSWORD = process.env.PASSWORD;
 
