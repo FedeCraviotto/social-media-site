@@ -3,7 +3,18 @@ import bcryptjs from 'bcryptjs';
 
 const authController = {
     login : (req, res) => {
-        res.send('ok');
+        // const checkIfUserExists = 'SELECT * FROM users WHERE username = ?';
+        // db.query(checkIfUserExists, [req.body.username], (err, data) =>{
+        //     if (err){
+        //         return res.status(404).json("Credentials error. Password or user doesn't match an existing record.")
+        //     }
+        //     if (data.length){
+        //         let hashedPasswordFromDb = data.password;
+        //         if (bcryptjs.compareSync(req.body.password,hashedPasswordFromDb)){
+
+        //         }
+        //     }
+        // })
     },
     register : (req, res) => {
 
