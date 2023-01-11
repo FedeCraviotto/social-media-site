@@ -1,17 +1,19 @@
 import { createContext, useEffect, useState } from "react";
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) =>{
     const [currentUser, setCurrentUser] = useState(
-        // Ahora en vez de que el valor por defecto sea 'false', va a ser null, porque no estamos checkeando un booleano
-        // El contenido en storage va a ser un objeto, vamos a  guardar varias cosas del usuario
-        JSON.parse(localStorage.getItem('user')) || null
+        JSON.parse(localStorage.getItem('user')) || null 
     );
 
-    const login = () => {
-        //ToDo FROM API
-        setCurrentUser({id: 2, name: 'Fede', avatar: 'https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'})
+    const login = async (inputs) => {
+        const res = await axios.post("http://localhost:3000/api/auth/login", inputs, {
+      withCredentials: true,
+    });
+
+    setCurrentUser(res.data)
     }
 
     useEffect(() => {

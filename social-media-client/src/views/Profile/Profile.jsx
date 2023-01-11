@@ -1,7 +1,8 @@
 import './profile.scss';
 
-import backgroundImg from '../../assets/images/profile/digital-background.jpg';
-import fishAvatar from '../../assets/images/users/avatars/fish.png';
+//Dummy imgs for testing without user being set
+// import backgroundImg from '../../assets/images/profile/digital-background.jpg';
+// import fishAvatar from '../../assets/images/users/avatars/fish.png';
 
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -15,12 +16,17 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/Posts/Posts';
 
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
+
 function Profile(){
+
+    const {currentUser} = useContext(AuthContext);
     return(
         <div className='profile'>
             <div className="images">
-                <img src={backgroundImg} alt="coverImg" className='coverImg'/>
-                <img src={fishAvatar} alt="profileImg" className='profileImg'/>
+                <img src={currentUser.cover} alt="coverImg" className='coverImg'/>
+                <img src={currentUser.avatar} alt="profileImg" className='profileImg'/>
             </div>
             <div className="profileContainer">
                 <div className="profileInfo">

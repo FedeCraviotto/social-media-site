@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './register.scss';
 import { useState } from 'react';
 import axios from 'axios';
 
 function Register(){
+
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -23,7 +26,8 @@ function Register(){
   async function handleClick(e) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/auth/register",inputs)
+      await axios.post("http://localhost:3000/api/auth/register",inputs);
+      navigate('/login');
     } catch (error) {
         setErr(error.response.data);
     }
