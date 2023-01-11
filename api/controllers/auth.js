@@ -1,6 +1,6 @@
 import db from '../connect.js';
 import bcryptjs from 'bcryptjs';
-import { jwt } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -27,10 +27,13 @@ const authController = {
             //Estos privilegios están codificados en objetos de tipo JSON, que se incrustan dentro de del payload o cuerpo de un mensaje que va firmado digitalmente.
             const token = jwt.sign({id:data[0].id}, process.env.SECRET_KEY);
             // Deconstruimos para devolver los datos del usuario logeado, salvo su password
-            // En la respuesta, ademas de enviar el json, guardamos el token en las cookies
+            // En la respuesta, ademas de enviar el json, guardamos el token en las cookies. Como el hash guarda el ID, con ese id vamos a poder hacer lo que queramos.
             // HttpOnly para que solo circule entre sitios web
             const {password, ...theRestOfTheFields} = data[0];
-            res.status(200).cookie('acessToken', token, {hhtpOnly: true,}).json(theRestOfTheFields);
+            res
+                .status(200)
+                .cookie('accessToken', token, {hhtpOnly: true,})
+                .json(theRestOfTheFields);
             
         })
     },
@@ -43,7 +46,7 @@ const authController = {
                 return res.status(500).json(err);
             }
             if (data.length) {
-                return res.status(409).json('User already exists')
+                return res.status(409).json('User already exists');
             }
             const hashedPassword = bcryptjs.hashSync(req.body.password, 10);
             const tableFields = [req.body.username, req.body.email, hashedPassword, req.body.name];
@@ -59,7 +62,14 @@ const authController = {
 
     },
     logout : (req, res) => {
-        res.send('ok');
+        res
+            .clearCookie('accessToken',{
+            secure:true,
+            sameSite:'none'
+            // Porque nuestra API corre en un puerto y el panel de react en otro. Para que no se bloquee la request de borrado
+        })
+            .status(200)
+            .json('Successfully logged out');
     }
 };
 
