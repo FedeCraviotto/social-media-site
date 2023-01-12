@@ -7,6 +7,7 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Comments from '../../Comments/Comments';
 import { useState } from 'react';
+import moment from 'moment';
 
 function Post({post}){
 
@@ -24,7 +25,7 @@ function Post({post}){
                             <Link to={`/profile/${post.postId}`}>
                                 <span className='name' >{post.userName}</span>
                             </Link>
-                            <span className='date'>37 minutes ago</span>
+                            <span className='date'>{moment(post.createdAt).fromNow()}</span>
                         </div>
                     </div>
                     <DragIndicatorOutlinedIcon />
@@ -32,7 +33,7 @@ function Post({post}){
                 
                 <div className="content">
                     <p>{post.description}</p>
-                    <img src={post.image} alt={post.userName} />
+                    <img src={'./upload/' + post.image} alt={post.userName} />
                 </div>
 
                 <div className="interactions">

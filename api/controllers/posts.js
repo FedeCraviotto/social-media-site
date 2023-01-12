@@ -14,7 +14,7 @@ const postController = {
             FROM posts 
             JOIN users 
             ON users.id = posts.userId
-            JOIN follows
+            LEFT JOIN follows
             ON posts.userId = follows.followedUser
             WHERE follows.followerUser = ?
             OR posts.userId = ?
