@@ -5,7 +5,6 @@ const postController = {
     getPosts : (req, res) => {
 
         const token = req.cookies.accessToken;
-        console.log(token)
         if(!token) return res.status(401).json('User not logged in')
 
         jwt.verify(token, process.env.SECRET_KEY, (err, userInfoInToken) =>{
@@ -33,7 +32,6 @@ const postController = {
     addPost : (req, res) => {
 
         const token = req.cookies.accessToken;
-        console.log(token)
         if(!token) return res.status(401).json('User not logged in')
 
         jwt.verify(token, process.env.SECRET_KEY, (err, userInfoInToken) =>{
