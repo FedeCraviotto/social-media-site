@@ -6,21 +6,31 @@ import LeftBar from '../Leftbar/LeftBar';
 import RightBar from '../Rightbar/RightBar';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { useContext } from 'react';
+
+import {
+    QueryClient,
+    QueryClientProvider
+  } from '@tanstack/react-query'
+
 function Layout(){
+
+    const queryClient = new QueryClient();
 
     const { darkMode } = useContext(DarkModeContext);
 
     return(
-        <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
-            <Navbar />
-            <div className='layout'>
-                <LeftBar />
-                <div className='outlet'>
-                <Outlet /> {/*Parte central dinamica. Seteado en children*/}
+        <QueryClientProvider client={queryClient}>
+            <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
+                <Navbar />
+                <div className='layout'>
+                    <LeftBar />
+                    <div className='outlet'>
+                    <Outlet /> {/*Parte central dinamica. Seteado en children*/}
+                    </div>
+                    <RightBar />
                 </div>
-                <RightBar />
             </div>
-        </div>
+        </QueryClientProvider>
     )
 };
 export default Layout;

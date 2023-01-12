@@ -8,6 +8,13 @@ export const AuthContextProvider = ({ children }) =>{
         JSON.parse(localStorage.getItem('user')) || null 
     );
 
+    
+    useEffect(() => {
+        // Tener en cuenta que esta key del storage se setea ya de entrada.
+        // La primera vez ya va a estar seteadea con el par 'user' = null;
+        localStorage.setItem('user', JSON.stringify(currentUser))
+    }, [currentUser]);
+    
     const login = async (inputs) => {
         const res = await axios.post("http://localhost:3000/api/auth/login", inputs, {
       withCredentials: true,
@@ -15,12 +22,6 @@ export const AuthContextProvider = ({ children }) =>{
 
     setCurrentUser(res.data)
     }
-
-    useEffect(() => {
-        // Por eso el objeto va como JSON string.
-        localStorage.setItem('user', JSON.stringify(currentUser))
-    }, [currentUser]);
-
     return (
         <AuthContext.Provider value={{currentUser, login}}>
             {children}

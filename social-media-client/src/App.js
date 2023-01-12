@@ -22,6 +22,14 @@ function App() {
   };
 
   const customRouterProvider = createBrowserRouter([ 
+    {
+      path:'/login',
+      element:<Login/>,
+    },
+    {
+      path:'/register',
+      element:<Register/>,
+    },
   {
     path:'/',
     element: (
@@ -40,14 +48,7 @@ function App() {
       }
     ]
   },
-  {
-    path:'/login',
-    element:<Login/>,
-  },
-  {
-    path:'/register',
-    element:<Register/>,
-  },
+  
 ])
   return (
     <>

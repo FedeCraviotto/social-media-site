@@ -7,14 +7,11 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Comments from '../../Comments/Comments';
 import { useState } from 'react';
-// import { useContext } from 'react';
-// import { AuthContext } from '../../../context/authContext';
 
 function Post({post}){
 
     const [commentOpen, setCommentOpen] = useState(false);
 
-    // ToDo Temporary
     const liked = false;
     return(
         <div className='post'>
