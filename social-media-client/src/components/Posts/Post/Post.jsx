@@ -6,14 +6,45 @@ import RedLikeButton from '../../../assets/images/users/posts/RedLikeButton.png'
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import Comments from '../../Comments/Comments';
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import moment from 'moment';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { makeRequest } from '../../../axios';
+import { AuthContext } from '../../../context/authContext';
 
 function Post({post}){
 
     const [commentOpen, setCommentOpen] = useState(false);
+    const {currentUser} = useContext(AuthContext)
 
-    const liked = false;
+    const queryClient = useQueryClient();
+ 
+    const { isLoading : likeIsLoading, error : likeError, data : likeData } = useQuery(['likes', post.postId], () =>
+        makeRequest.get('/likes?postId=' + post.postId)
+        .then(res => {
+            return res.data
+        })
+    );
+
+    const mutation = useMutation((liked) => {
+        if(liked) return makeRequest.delete('likes/delete?postId=' + post.postId);
+        return makeRequest.post('likes/add', {postId : post.postId});
+    },
+    {
+        onSuccess : () => {
+            queryClient.invalidateQueries(['likes'])
+        }
+    }
+    );
+
+    
+    async function handleLike(){
+        mutation.mutate(likeData.includes(currentUser.id)); // = 'liked' param. If its true, liked = true --> add like.
+        // If false, liked = false --> delete like.
+    }
+    if (likeIsLoading) return 'Loading...'
+    if (likeError) return 'An error has occurred: ' + likeError.message
+    
     return(
         <div className='post'>
             <div className="container">
@@ -38,10 +69,10 @@ function Post({post}){
 
                 <div className="interactions">
                     <div className="item">
-                        {liked ?
-                        <img src={RedLikeButton} alt="Clicked Like Button" /> : <img src={EmptyLikeButton} alt="Like Button" />
+                        {likeData.includes(currentUser.id) ?
+                        <img src={RedLikeButton} alt="Clicked Like Button" onClick={handleLike}/> : <img src={EmptyLikeButton} alt="Like Button" onClick={handleLike}/>
                         }
-                        450 Likes
+                        {likeData.length} Likes
                     </div>
                     <div className="item" onClick={()=>setCommentOpen(!commentOpen)}>
                         <ChatOutlinedIcon />

@@ -40,9 +40,9 @@ const commentsController = {
             db.query(q, [commentInfoFields], (err, data) =>{
                 if (err) return res.status(500).json(err);
                 return res.status(200).json('Commnet successfully added!');
-            })
-        })
+            });
+        });
 
     }
-}
+};
 export default commentsController;
