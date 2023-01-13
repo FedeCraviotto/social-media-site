@@ -20,7 +20,7 @@ function Post({post}){
 
                 <div className="user">
                     <div className="userInfo">
-                        <img src={post.avatar} alt={post.userName} />
+                        <img src={process.env.REACT_APP_URL_FOR_ROOT+post.avatar} alt={post.userName} />
                         <div className="details">
                             <Link to={`/profile/${post.postId}`}>
                                 <span className='name' >{post.userName}</span>
@@ -33,7 +33,7 @@ function Post({post}){
                 
                 <div className="content">
                     <p>{post.description}</p>
-                    <img src={'./upload/' + post.image} alt={post.userName} />
+                    <img src={process.env.REACT_APP_URL_FOR_ROOT+ post.image} alt={post.userName} />
                 </div>
 
                 <div className="interactions">
@@ -53,7 +53,7 @@ function Post({post}){
                     </div>
                 </div>
                 
-                {commentOpen && <Comments />}
+                {commentOpen && <Comments postId={post.postId}/>}
 
             </div>
         </div>

@@ -25,7 +25,7 @@ function LeftBar(){
                 <div className="menu">
                     <div className="user">
                     <Link to={`/profile/${currentUser.id}`}>
-                        <img src={currentUser.avatar} alt={currentUser.name} />
+                        <img src={process.env.REACT_APP_URL_FOR_ROOT+ currentUser.avatar} alt={currentUser.name} />
                         <span>{currentUser.name}</span>
                     </Link>
                     </div>

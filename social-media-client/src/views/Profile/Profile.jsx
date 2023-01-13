@@ -25,8 +25,8 @@ function Profile(){
     return(
         <div className='profile'>
             <div className="images">
-                <img src={currentUser.cover} alt="coverImg" className='coverImg'/>
-                <img src={currentUser.avatar} alt="profileImg" className='profileImg'/>
+                <img src={process.env.REACT_APP_URL_FOR_ROOT+currentUser.cover} alt="coverImg" className='coverImg'/>
+                <img src={process.env.REACT_APP_URL_FOR_ROOT+currentUser.avatar} alt="profileImg" className='profileImg'/>
             </div>
             <div className="profileContainer">
                 <div className="profileInfo">

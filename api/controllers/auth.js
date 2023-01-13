@@ -20,15 +20,9 @@ const authController = {
             if (!passwordMatch){
                 return res.status(400).json("Credentials don't match");
             }
-            // Creamos un token con el cual el usuario va a poder consultar todo lo que tenga que consultar al backend.
-            // Con su id, y la secret key
-            // Usamos JWT  poder propagar entre dos partes, y de forma segura, la identidad de un determinado usuario
-            // Sigue el estándar de autorización OAuth 2.0, que es “Bearer”.
-            //Estos privilegios están codificados en objetos de tipo JSON, que se incrustan dentro de del payload o cuerpo de un mensaje que va firmado digitalmente.
+            
             const token = jwt.sign({id:data[0].id}, process.env.SECRET_KEY);
-            // Deconstruimos para devolver los datos del usuario logeado, salvo su password
-            // En la respuesta, ademas de enviar el json, guardamos el token en las cookies. Como el hash guarda el ID, con ese id vamos a poder hacer lo que queramos.
-            // HttpOnly para que solo circule entre sitios web
+            
             const {password, ...theRestOfTheFields} = data[0];
             res
                 .status(200)
@@ -66,7 +60,7 @@ const authController = {
             .clearCookie('accessToken',{
             secure:true,
             sameSite:'none'
-            // Porque nuestra API corre en un puerto y el panel de react en otro. Para que no se bloquee la request de borrado
+            
         })
             .status(200)
             .json('Successfully logged out');

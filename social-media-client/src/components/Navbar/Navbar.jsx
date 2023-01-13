@@ -39,7 +39,7 @@ function Navbar() {
         <MailIcon />
         <NotificationIcon />
         <div className="user">
-          <img src={currentUser.avatar} alt="Sample Guitarrist" />
+          <img src={process.env.REACT_APP_URL_FOR_ROOT+ currentUser.avatar} alt="" />
           <span>{currentUser.name}</span>
         </div>
       </div>

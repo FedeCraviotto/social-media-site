@@ -1,58 +1,56 @@
-import './comments.scss';
-import Comment from './Comment/Comment';
-import { useContext } from 'react';
-import {AuthContext} from '../../context/authContext';
+import "./comments.scss";
+import Comment from "./Comment/Comment";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext";
+import { makeRequest } from "../../axios";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
-function Comments(){
-    const {currentUser} = useContext(AuthContext);
-    const sampleComments = [
-        {
-            commentId: 1,
-            userId: 1,
-            userName: 'Fede Craviotto',
-            avatar: 'https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'Tranquilos que van a tener laburo seguro XD'
-        },
-        {
-            commentId: 5,
-            userId: 2,
-            userName: 'Los Pollos Hermanos',
-            avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'COPIUM',
-        },
-        {
-            commentId: 2,
-            userId: 2,
-            userName: 'Johnny Vargas',
-            avatar: 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'LOL'
-        },
-        {
-            commentId: 3,
-            userId: 3,
-            userName: 'Nacho Vargas',
-            avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: '"Nosotros no somos tanto del front"... LMAO'
-        },
-        {
-            commentId: 4,
-            userId: 2,
-            userName: 'Los Pollos Hermanos',
-            avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            description: 'ASHDKJASHDAS',
-        },
-    ]
-    return(
-        <div className="comments">
-            <div className="write">
-                <img src={currentUser.avatar} alt={currentUser.name} />
-                <input type="text" placeholder='Write a comment...' />
-                <button>Send</button>
-            </div>
-            {sampleComments.map((comment, index) =>
-                <Comment key={comment.userName + comment.commentId + index} comment={comment}/>
-            )}
-        </div>
-    )
+function Comments({ postId }) {
+  const { currentUser } = useContext(AuthContext);
+  const [description, setDescription] = useState("");
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    (newComment) => {
+      return makeRequest.post("/comments/add", newComment);
+    },
+    {
+      onSuccess: () => {
+        // Invalidate AND REFRESH
+        queryClient.invalidateQueries(["comments"]);
+      },
+    }
+  );
+
+  async function handleClick(e) {
+    e.preventDefault();
+    mutation.mutate({description, postId});
+    setDescription("");
+  }
+
+  const { isLoading, error, data } = useQuery(["comments"], () =>
+    makeRequest.get("/comments?postId=" + postId).then((res) => {
+      return res.data;
+    })
+  );
+
+  if (isLoading) return "Loading...";
+  if (error) return "An error has occurred: " + error.message;
+
+  return (
+    <div className="comments">
+      <div className="write">
+        <img src={process.env.REACT_APP_URL_FOR_ROOT + currentUser.avatar} alt={currentUser.name} />
+        <input type="text" placeholder="Write a comment..." onChange={(e)=>{setDescription(e.target.value)}} value={description} />
+        <button onClick={handleClick}>Send</button>
+      </div>
+      {data.map((comment, index) => (
+        <Comment
+          key={comment.userName + comment.commentId + index}
+          comment={comment}
+        />
+      ))}
+    </div>
+  );
 }
 export default Comments;

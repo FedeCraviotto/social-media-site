@@ -29,12 +29,13 @@ function Stories(){
     return(
         <div className='stories'>
             <div className='story'>
-                <img src={currentUser.avatar} alt={currentUser.name} />
+                <img src={process.env.REACT_APP_URL_FOR_ROOT+currentUser.avatar} alt={currentUser.name} />
                 <span>{currentUser.name}</span>
                 <button>+</button>
             </div>
             {sampleStories.map((story, index) =>(
                 <div className='story' key={story.name + index}>
+                    {/* <img src={process.env.REACT_APP_URL_FOR_ROOT+story.avatar} alt={story.name} /> */}
                     <img src={story.avatar} alt={story.name} />
                     <span>{story.name}</span>
                 </div>

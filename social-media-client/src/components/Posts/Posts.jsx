@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import {makeRequest} from '../../axios.js';
 
 function Posts(){
-
+    
     const { isLoading, error, data } = useQuery(['posts'], () =>
         makeRequest.get('/posts')
         .then(res => {

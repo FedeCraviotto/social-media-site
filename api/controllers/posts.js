@@ -42,7 +42,7 @@ const postController = {
             const postInfoFields = [
                 req.body.description,
                 req.body.image,
-                moment(Date.now()).format('YYYY-MM-DD HH-MM-SS'),
+                moment(Date.now()).format('YYYY-MM-DD HH-mm-ss'),
                 userInfoInToken.id
             ]
             db.query(q, [postInfoFields], (err, data) =>{
