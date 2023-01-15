@@ -39,8 +39,7 @@ function Post({post}){
 
     
     async function handleLike(){
-        mutation.mutate(likeData.includes(currentUser.id)); // = 'liked' param. If its true, liked = true --> add like.
-        // If false, liked = false --> delete like.
+        mutation.mutate(likeData.includes(currentUser.id));
     }
     if (likeIsLoading) return 'Loading...'
     if (likeError) return 'An error has occurred: ' + likeError.message
@@ -53,7 +52,7 @@ function Post({post}){
                     <div className="userInfo">
                         <img src={process.env.REACT_APP_URL_FOR_ROOT+post.avatar} alt={post.userName} />
                         <div className="details">
-                            <Link to={`/profile/${post.postId}`}>
+                            <Link to={`/profile/${post.userId}`}>
                                 <span className='name' >{post.userName}</span>
                             </Link>
                             <span className='date'>{moment(post.createdAt).fromNow()}</span>

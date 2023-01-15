@@ -5,6 +5,7 @@ import userRouter from './routes/users.js';
 import postRouter from './routes/posts.js';
 import likeRouter from './routes/likes.js';
 import commentRouter from './routes/comments.js';
+import followRouter from './routes/follows.js';
 import authRouter from './routes/auth.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -44,6 +45,7 @@ app.use('/api/users', userRouter);
 app.use('/api/posts', postRouter);
 app.use('/api/likes', likeRouter);
 app.use('/api/comments', commentRouter);
+app.use('/api/follows', followRouter);
 
 
 app.listen(PORT, ()=>{

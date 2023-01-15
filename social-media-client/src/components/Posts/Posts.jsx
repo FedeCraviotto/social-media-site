@@ -4,10 +4,10 @@ import Post from './Post/Post';
 import { useQuery } from '@tanstack/react-query'
 import {makeRequest} from '../../axios.js';
 
-function Posts(){
+function Posts({userId}){
     
     const { isLoading, error, data } = useQuery(['posts'], () =>
-        makeRequest.get('/posts')
+        makeRequest.get('/posts?userId=' + userId)
         .then(res => {
             return res.data
         })
