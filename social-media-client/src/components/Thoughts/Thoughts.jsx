@@ -20,11 +20,11 @@ const Thoughts = () => {
       const formData = new FormData();
       formData.append('image', imageToUpload);
       const res = await makeRequest.post('/upload', formData);
-      return res.data
+      return res.data;
     } catch (err) {
       console.log(err)
     }
-  }
+  };
 
   const queryClient = useQueryClient();
 

@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const authController = {
+    // $2a$10$NrPJk/kiyGempZ4BrAZ.durp1ZNI/F4DCdinx8f1T0SW4ZjB6I8w2
     login : (req, res) => {
         const checkIfUserExists = 'SELECT * FROM users WHERE username = ?';
         db.query(checkIfUserExists, [req.body.username], (err, data) =>{
