@@ -8,6 +8,9 @@
 #Enviroment
 .env
 
+# Images
+/public/upload
+
 # testing
 /coverage
 
