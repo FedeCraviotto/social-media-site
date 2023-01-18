@@ -52,7 +52,7 @@ const Thoughts = () => {
         <div className="top">
           <div className="left">
             <img
-              src={process.env.REACT_APP_URL_FOR_ROOT+currentUser.avatar}
+              src={currentUser.avatar?.includes('http', 0)? currentUser.avatar : process.env.REACT_APP_URL_FOR_ROOT+ currentUser.avatar}
               alt={currentUser.name}
             />
             <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} onChange={(e)=>setDescription(e.target.value)} value={description} />

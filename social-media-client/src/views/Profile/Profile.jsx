@@ -69,12 +69,12 @@ function Profile(){
           <>
             <div className="images">
               <img
-                src={process.env.REACT_APP_URL_FOR_ROOT + data.cover}
+                src={data.cover?.includes('http', 0)? data.cover : process.env.REACT_APP_URL_FOR_ROOT+ data.cover}
                 alt="coverImg"
                 className="coverImg"
               />
               <img
-                src={process.env.REACT_APP_URL_FOR_ROOT + data.avatar}
+                src={data.avatar?.includes('http', 0)? data.avatar : process.env.REACT_APP_URL_FOR_ROOT+ data.avatar}
                 alt="profileImg"
                 className="profileImg"
               />

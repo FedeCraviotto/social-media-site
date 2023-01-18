@@ -19,79 +19,86 @@ import { Link } from 'react-router-dom';
 
 function LeftBar(){
     const { currentUser } = useContext(AuthContext);
-    return(
-        <div className='leftBar'>
-            <div className="container">
-                <div className="menu">
-                    <div className="user">
-                    <Link to={`/profile/${currentUser.id}`}>
-                        <img src={process.env.REACT_APP_URL_FOR_ROOT+ currentUser.avatar} alt={currentUser.name} />
-                        <span>{currentUser.name}</span>
-                    </Link>
-                    </div>
-                    <div className="item">
-                        <img src={FriendsIcon} alt="Friends" />
-                        <span>Friends</span>
-                    </div>
-                    <div className="item">
-                        <img src={GroupsIcon} alt="Groups" />
-                        <span>Groups</span>
-                    </div>
-                    <div className="item">
-                        <img src={MarketplaceIcon} alt="Friends" />
-                        <span>Marketplace</span>
-                    </div>
-                    <div className="item">
-                        <img src={WatchIcon} alt="Friends" />
-                        <span>Watch</span>
-                    </div>
-                    <div className="item">
-                        <img src={MemoriesIcon} alt="Friends" />
-                        <span>Memories</span>
-                    </div>
-                </div>
-                <hr />
-                <div className="menu">
-                    <span>Your shortcuts</span>
-                    <div className="item">
-                        <img src={EventsIcon} alt="Events" />
-                        <span>Events</span>
-                    </div>
-                    <div className="item">
-                        <img src={GamingIcon} alt="Gaming" />
-                        <span>Gaming</span>
-                    </div>
-                    <div className="item">
-                        <img src={GalleryIcon} alt="Gallery" />
-                        <span>Gallery</span>
-                    </div>
-                    <div className="item">
-                        <img src={VideosIcon} alt="Videos" />
-                        <span>Videos</span>
-                    </div>
-                    <div className="item">
-                        <img src={MessagesIcon} alt="Messages" />
-                        <span>Messages</span>
-                    </div>
-                </div>
-                <hr />
-                <div className="menu">
-                    <span>Others</span>
-                    <div className="item">
-                        <img src={FundraiserIcon} alt="Fundraiser" />
-                        <span>Fundraiser</span>
-                    </div>
-                    <div className="item">
-                        <img src={TutorialsIcon} alt="Tutorials" />
-                        <span>Tutorials</span>
-                    </div>
-                    <div className="item">
-                        <img src={CoursesIcon} alt="Courses" />
-                        <span>Courses</span>
-                    </div>
-                </div>
+    return (
+      <div className="leftBar">
+        <div className="container">
+          <div className="menu">
+            <div className="user">
+              <Link to={`/profile/${currentUser.id}`}>
+                <img
+                  src={
+                    currentUser.avatar?.includes("http", 0)
+                      ? currentUser.avatar
+                      : process.env.REACT_APP_URL_FOR_ROOT + currentUser.avatar
+                  }
+                  alt={currentUser.name}
+                />
+                <span>{currentUser.name}</span>
+              </Link>
             </div>
+            <div className="item">
+              <img src={FriendsIcon} alt="Friends" />
+              <span>Friends</span>
+            </div>
+            <div className="item">
+              <img src={GroupsIcon} alt="Groups" />
+              <span>Groups</span>
+            </div>
+            <div className="item">
+              <img src={MarketplaceIcon} alt="Friends" />
+              <span>Marketplace</span>
+            </div>
+            <div className="item">
+              <img src={WatchIcon} alt="Friends" />
+              <span>Watch</span>
+            </div>
+            <div className="item">
+              <img src={MemoriesIcon} alt="Friends" />
+              <span>Memories</span>
+            </div>
+          </div>
+          <hr />
+          <div className="menu">
+            <span>Your shortcuts</span>
+            <div className="item">
+              <img src={EventsIcon} alt="Events" />
+              <span>Events</span>
+            </div>
+            <div className="item">
+              <img src={GamingIcon} alt="Gaming" />
+              <span>Gaming</span>
+            </div>
+            <div className="item">
+              <img src={GalleryIcon} alt="Gallery" />
+              <span>Gallery</span>
+            </div>
+            <div className="item">
+              <img src={VideosIcon} alt="Videos" />
+              <span>Videos</span>
+            </div>
+            <div className="item">
+              <img src={MessagesIcon} alt="Messages" />
+              <span>Messages</span>
+            </div>
+          </div>
+          <hr />
+          <div className="menu">
+            <span>Others</span>
+            <div className="item">
+              <img src={FundraiserIcon} alt="Fundraiser" />
+              <span>Fundraiser</span>
+            </div>
+            <div className="item">
+              <img src={TutorialsIcon} alt="Tutorials" />
+              <span>Tutorials</span>
+            </div>
+            <div className="item">
+              <img src={CoursesIcon} alt="Courses" />
+              <span>Courses</span>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 export default LeftBar;

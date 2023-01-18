@@ -26,21 +26,28 @@ function Stories(){
             avatar: 'https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         },
     ]
-    return(
-        <div className='stories'>
-            <div className='story'>
-                <img src={process.env.REACT_APP_URL_FOR_ROOT+currentUser.avatar} alt={currentUser.name} />
-                <span>{currentUser.name}</span>
-                <button>+</button>
-            </div>
-            {sampleStories.map((story, index) =>(
-                <div className='story' key={story.name + index}>
-                    {/* <img src={process.env.REACT_APP_URL_FOR_ROOT+story.avatar} alt={story.name} /> */}
-                    <img src={story.avatar} alt={story.name} />
-                    <span>{story.name}</span>
-                </div>
-            ))}
+    return (
+      <div className="stories">
+        <div className="story">
+          <img
+            src={
+              currentUser.avatar?.includes("http", 0)
+                ? currentUser.avatar
+                : process.env.REACT_APP_URL_FOR_ROOT + currentUser.avatar
+            }
+            alt={currentUser.name}
+          />
+          <span>{currentUser.name}</span>
+          <button>+</button>
         </div>
-    )
+        {sampleStories.map((story, index) => (
+          <div className="story" key={story.name + index}>
+            {/* <img src={story.avatar?.includes('http', 0)? story.avatar : process.env.REACT_APP_URL_FOR_ROOT+ story.avatar} alt={story.name}/> */}
+            <img src={story.avatar} alt={story.name} />
+            <span>{story.name}</span>
+          </div>
+        ))}
+      </div>
+    );
 };
 export default Stories;
