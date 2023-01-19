@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
-import moment from 'moment';
+
 function Comments({ postId }) {
   const { currentUser } = useContext(AuthContext);
   const [description, setDescription] = useState("");
@@ -34,7 +34,6 @@ function Comments({ postId }) {
     setDescription("");
   }
 
-  
 
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
@@ -47,18 +46,10 @@ function Comments({ postId }) {
         <button onClick={handleClick}>Send</button>
       </div>
       {data.map((comment, index) => (
-        <div className="comment">
-            <img src={process.env.REACT_APP_URL_FOR_ROOT+comment.avatar} alt={comment.userName + 'avatar'} />
-            <div className="info">
-                <span>{comment.userName}</span>
-                <p>{comment.description}</p>
-            </div>
-            <span className='date'> {moment(comment.createdAt).fromNow()}</span>
-        </div>
-        // <Comment
-        //   key={comment.userName + comment.commentId + index}
-        //   comment={comment}
-        // />
+        <Comment
+          key={comment.description + comment.id + index}
+          comment={comment}
+        />
       ))}
     </div>
   );
