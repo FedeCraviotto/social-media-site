@@ -43,6 +43,23 @@ const commentsController = {
             });
         });
 
-    }
+    },
+    deleteComment : (req, res) => {
+        const token = req.cookies.accessToken;
+        if(!token) return res.status(401).json('User not logged in')
+      
+        jwt.verify(token, process.env.SECRET_KEY, (err, userInfo) => {
+            if(err) return res.status(403).json('Invalid token');
+      
+          const commentId = req.params.id;
+          const q = "DELETE FROM comments WHERE `id` = ? AND `userId` = ?";
+      
+          db.query(q, [commentId, userInfo.id], (err, data) => {
+            if (err) return res.status(500).json(err);
+            if (data.affectedRows > 0) return res.json("Comment successfully deleted!");
+            return res.status(403).json("You can delete only your own comments!");
+          });
+        });
+      }
 };
 export default commentsController;

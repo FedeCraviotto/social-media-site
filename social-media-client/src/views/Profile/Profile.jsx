@@ -8,22 +8,20 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Posts from '../../components/Posts/Posts';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { useLocation } from 'react-router-dom';
 import { makeRequest } from '../../axios';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import Modal from '../../components/Modal/Modal';
-import { useState } from 'react';
-
 
 function Profile(){
 
   const [openModal, setOpenModal] = useState(false);
 
-    const userId = parseInt(useLocation().pathname.split('/')[2]);
-
-    const {currentUser} = useContext(AuthContext);
+  const userId = parseInt(useLocation().pathname.split('/')[2]);
+  
+  const {currentUser} = useContext(AuthContext);
 
     const { isLoading, error, data } = useQuery(['users'], () =>
         makeRequest.get('/users/find/' + userId)

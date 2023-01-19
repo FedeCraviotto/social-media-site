@@ -4,12 +4,18 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
-
+import moment from 'moment';
 function Comments({ postId }) {
   const { currentUser } = useContext(AuthContext);
   const [description, setDescription] = useState("");
-
   const queryClient = useQueryClient();
+
+  const { isLoading, error, data } = useQuery(["comments"], () =>
+    makeRequest.get("/comments?postId=" + postId).then((res) => {
+      return res.data;
+    })
+  );
+
   const mutation = useMutation(
     (newComment) => {
       return makeRequest.post("/comments/add", newComment);
@@ -28,11 +34,7 @@ function Comments({ postId }) {
     setDescription("");
   }
 
-  const { isLoading, error, data } = useQuery(["comments"], () =>
-    makeRequest.get("/comments?postId=" + postId).then((res) => {
-      return res.data;
-    })
-  );
+  
 
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
@@ -45,10 +47,18 @@ function Comments({ postId }) {
         <button onClick={handleClick}>Send</button>
       </div>
       {data.map((comment, index) => (
-        <Comment
-          key={comment.userName + comment.commentId + index}
-          comment={comment}
-        />
+        <div className="comment">
+            <img src={process.env.REACT_APP_URL_FOR_ROOT+comment.avatar} alt={comment.userName + 'avatar'} />
+            <div className="info">
+                <span>{comment.userName}</span>
+                <p>{comment.description}</p>
+            </div>
+            <span className='date'> {moment(comment.createdAt).fromNow()}</span>
+        </div>
+        // <Comment
+        //   key={comment.userName + comment.commentId + index}
+        //   comment={comment}
+        // />
       ))}
     </div>
   );

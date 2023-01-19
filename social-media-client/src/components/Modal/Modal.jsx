@@ -1,12 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { makeRequest } from "../../axios";
 import "./modal.scss";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-
+import { AuthContext } from "../../context/authContext";
 
 function Modal({ setOpenModal, user }) {
-
+  
+  const { setCurrentUser} = useContext(AuthContext);
+  
   async function uploadImage(file) {
     try {
       const formData = new FormData();
@@ -57,7 +59,9 @@ function Modal({ setOpenModal, user }) {
     avatarURL = avatar ? await uploadImage(avatar) : user.avatar;
 
     mutation.mutate({ ...fields, cover: coverURL, avatar: avatarURL });
-    // setCurrentUser(user);
+    let userUpdated = {...user, ...fields, cover: coverURL, avatar: avatarURL};
+    // localStorage.setItem('user', JSON.stringify(userUpdated));
+    setCurrentUser(userUpdated);
     setOpenModal(false);
     setCover(null);
     setAvatar(null);
