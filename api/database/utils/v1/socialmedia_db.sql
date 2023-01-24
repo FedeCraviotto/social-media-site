@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `socialmedia_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `socialmedia_db`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: socialmedia_db
@@ -27,16 +25,16 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` varchar(200) DEFAULT NULL,
-  `createdAt` datetime DEFAULT NULL,
+  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `userId` int NOT NULL,
   `postId` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `userId_idx` (`userId`),
   KEY `postId_idx` (`postId`),
-  CONSTRAINT `comment_postId` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`),
+  CONSTRAINT `comment_postId` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comment_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +43,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (10,'Peaceful location','2023-01-18 20:45:00',16,17),(11,'Omfg...','2023-01-18 22:04:44',12,19),(12,'Looks nice','2023-01-18 22:06:22',13,17),(13,':D','2023-01-18 22:07:36',14,21),(14,'D:','2023-01-18 22:07:40',14,20),(15,'Yes sir','2023-01-18 22:08:06',14,19),(16,'Mario chomped...','2023-01-18 22:08:15',14,18),(17,'holly Molly','2023-01-18 22:08:41',14,17),(18,'Fresh white meat, yeaa','2023-01-18 22:09:53',15,22),(19,'Nice picture','2023-01-18 22:10:54',15,21),(20,'is that... KapPython?','2023-01-18 22:11:20',15,20),(21,'y ahora','2023-01-18 22:18:00',15,21),(22,'uum','2023-01-18 22:45:21',14,24),(23,'What a joke','2023-01-18 22:46:38',12,24),(24,'Suturittsu','2023-01-18 22:46:48',12,23),(25,'Looks pretty gay','2023-01-18 22:47:01',12,22),(26,'Code this .i.','2023-01-18 22:47:08',12,20),(27,'','2023-01-19 00:49:29',12,21);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +64,7 @@ CREATE TABLE `follows` (
   KEY `followedUser_idx` (`followedUser`),
   CONSTRAINT `followedUser` FOREIGN KEY (`followedUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `followerUser` FOREIGN KEY (`followerUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +73,7 @@ CREATE TABLE `follows` (
 
 LOCK TABLES `follows` WRITE;
 /*!40000 ALTER TABLE `follows` DISABLE KEYS */;
-INSERT INTO `follows` VALUES (1,2,8),(2,8,2),(3,9,2),(4,9,8);
+INSERT INTO `follows` VALUES (12,11,11),(13,11,11),(14,11,11),(15,11,11),(17,13,11),(18,13,14),(19,13,16),(20,12,15),(21,12,14),(22,12,13),(23,14,11),(24,14,13),(25,14,15),(26,15,11),(27,15,12),(28,15,14);
 /*!40000 ALTER TABLE `follows` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +94,7 @@ CREATE TABLE `likes` (
   KEY `likes_postId_idx` (`postId`),
   CONSTRAINT `likes_postId` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `likes_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,6 +103,7 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+INSERT INTO `likes` VALUES (11,13,17),(12,14,19),(13,14,17),(14,15,23),(15,15,21),(16,15,20),(17,14,24),(18,12,24),(19,12,23);
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,12 +119,12 @@ CREATE TABLE `posts` (
   `userId` int NOT NULL,
   `description` varchar(300) DEFAULT NULL,
   `image` varchar(300) DEFAULT NULL,
-  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `userId_idx` (`userId`),
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (2,8,'Nos llena de orgullo y satisfacción anunciar que nuestro último trabajo HOGAR se encuentra disponible al módico precio de 10 euros en el Bar Sanatorio y a cambio te ponen una caña pagada por tí. Ea.','https://images.unsplash.com/photo-1672643195976-225a511ce2c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80\'','2023-01-11 06:05:19'),(3,9,'Mismo sitio y distintos momentos. Conciertos en la antigua Sala Goya y en La Mecánica. Diseño de Alberto Bizarro.','https://images.unsplash.com/photo-1672659382440-5a030f208eca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80','2023-01-12 01:03:27'),(4,9,'El próximo sábado 12 de Noviembre, a las 12 de la mañana os espero en el Museo de Jaén  en el cierre del \"Ciclo A Solas\", que une música y colecciones.','https://images.unsplash.com/photo-1672651158855-f225fe553b0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80','2023-01-12 04:10:01'),(5,2,'Proximo concierto al aire libre a 2 cuadras del estadio de Argentinos Juniors','https://images.unsplash.com/photo-1672659878782-5862ce1d70d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80','2023-01-12 10:30:31'),(6,8,'Probando 1, 2, 3...canelones, chichuline...','https://images.unsplash.com/photo-1619719304744-2858f324351c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80','2023-01-12 11:30:31'),(7,9,'loque sea','https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80','2023-01-12 16:34:01'),(8,2,'Probando la nueva app de la red social. Estamos probando la funcionalidad de los posts. Esperamos terminar pronto y seguir avanzando','https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80','2023-01-12 16:01:31');
+INSERT INTO `posts` VALUES (17,16,'Good morning','16740854626201673561449153publicidad-1.jpg','2023-01-18 20:44:22'),(18,12,'Mountains','1674090266124cover02.jpg','2023-01-18 22:04:26'),(19,12,'Sasha it\'s you?','1674090276503sasha.jpg','2023-01-18 22:04:36'),(20,14,'Computers','1674090444673cover01.jpg','2023-01-18 22:07:24'),(21,14,'Montains','1674090452503cover02.jpg','2023-01-18 22:07:32'),(22,15,'Yea brah','1674090546178av01.jpeg','2023-01-18 22:09:06'),(23,15,'Rap is the Poetry of the streets nigga','1674090575673street.jpg','2023-01-18 22:09:35'),(24,14,'Whattabout na?','1674092716589blackie.jpg','2023-01-18 22:45:16'),(25,11,'Lamuerrrrrte','1674092716589blackie.jpg','2023-01-18 23:40:44');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `stories` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `stories_userId_idx` (`userId`),
   CONSTRAINT `stories_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +161,7 @@ CREATE TABLE `stories` (
 
 LOCK TABLES `stories` WRITE;
 /*!40000 ALTER TABLE `stories` DISABLE KEYS */;
+INSERT INTO `stories` VALUES (1,12,'1674080900640street.jpg'),(2,14,'1674082522742cover02.jpg'),(3,15,'1674080439928av02.jpeg'),(4,16,'1674080324817cover01.jpg');
 /*!40000 ALTER TABLE `stories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +184,7 @@ CREATE TABLE `users` (
   `website` varchar(75) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +193,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Johhny V','johnnyvargas@gmail.com','$2a$10$Hkw/mhiToyJO27JOOKNdQusSPVdZ2xLQ5g17eG8nkFcCP/q83cury','Johnny Vargas','https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80','https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',NULL,NULL),(8,'Marito','mario@gmail.com','$2a$10$jlO6eVc1tng75AKT8LJYguMZtuBnSLek.CgpVySHKmKBeDvHxC0fC','Mario Das Neves','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',NULL,NULL),(9,'FNC','fc@gmail.com','$2a$10$sFJo92g4rToUAjJAnrKgEuBsC6nzBDfI6f4MQJ/04946BGovsC8n2','Fede Craviotto','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','https://images.pexels.com/photos/1769279/pexels-photo-1769279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',NULL,NULL);
+INSERT INTO `users` VALUES (11,'FNC','fc@gmail.com','$2a$10$JkYTaBxnTg9yHvqH.DCd1u01PpRgGGuLInZpXgd.mf/PmR1RTabBe','Tina Tao','1674096933125av02.jpeg','1674096933134blackie.jpg','WRTFFF','www.exampuru.com'),(12,'FNC2','fc2@gmail.com','$2a$10$IB7r0vNBSWpzcRNvZYL7duVACWR6X8uO4F6.dGjP8wGRInfRF/yoK','Fede','1674080324817cover01.jpg','1674088510207Fedeperfil.jpeg','US','www.example.com'),(13,'FNC3','fc3@gmail.com','$2a$10$vnt1DhDN3Ed9I0q7IfIu.eTpfo8/2qoqdDgtSbRFBp2bNmazFvKuC','Dahler Mehndi','16740806167401673561449153publicidad-1.jpg','1674080616758av02.jpeg','Mubahdyayad','www.truluktruluk.dadada'),(14,'FNC4','fc4@gmail.com','$2a$10$YIddeie3CubsDNbqwTJ0HeGbylzFpVTpeMjI3jqd71iYXjChjVFQi','Sasha Grey','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','1674080793202sasha.jpg','NY','www.sasha.com'),(15,'FNC5','fc5@gmail.com','$2a$10$rVrbmrey6FpCmYZBT0z.QOhjK4EePBvT2LBky0gdVtInz1XNtr4M.','Cecille Williams','1674080900640street.jpg','1674080900660blackie.jpg','Bronx','www.bbb.com'),(16,'FNC6','fc6@gmail.com','$2a$10$Ht5jaFt9P5n6/Lhbwd813uFt30dpg6x80KBEm8KYeItR5JTViU1HG','Micky V','1674082522742cover02.jpg','1674084643180av03.jpg','dasd','ddddddsss');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -205,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-12 16:52:52
+-- Dump completed on 2023-01-24 19:16:53
