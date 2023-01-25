@@ -6,10 +6,10 @@
 .pnp.js
 
 #Enviroment
-.env
+# .env
 
 # Images
-/public/upload
+# /public/upload
 
 # testing
 /coverage
