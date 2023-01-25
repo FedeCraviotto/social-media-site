@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `socialmedia_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `socialmedia_db`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: socialmedia_db
@@ -193,7 +195,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (11,'FNC','fc@gmail.com','$2a$10$JkYTaBxnTg9yHvqH.DCd1u01PpRgGGuLInZpXgd.mf/PmR1RTabBe','Tina Tao','1674096933125av02.jpeg','1674096933134blackie.jpg','WRTFFF','www.exampuru.com'),(12,'FNC2','fc2@gmail.com','$2a$10$IB7r0vNBSWpzcRNvZYL7duVACWR6X8uO4F6.dGjP8wGRInfRF/yoK','Fede','1674080324817cover01.jpg','1674088510207Fedeperfil.jpeg','US','www.example.com'),(13,'FNC3','fc3@gmail.com','$2a$10$vnt1DhDN3Ed9I0q7IfIu.eTpfo8/2qoqdDgtSbRFBp2bNmazFvKuC','Dahler Mehndi','16740806167401673561449153publicidad-1.jpg','1674080616758av02.jpeg','Mubahdyayad','www.truluktruluk.dadada'),(14,'FNC4','fc4@gmail.com','$2a$10$YIddeie3CubsDNbqwTJ0HeGbylzFpVTpeMjI3jqd71iYXjChjVFQi','Sasha Grey','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','1674080793202sasha.jpg','NY','www.sasha.com'),(15,'FNC5','fc5@gmail.com','$2a$10$rVrbmrey6FpCmYZBT0z.QOhjK4EePBvT2LBky0gdVtInz1XNtr4M.','Cecille Williams','1674080900640street.jpg','1674080900660blackie.jpg','Bronx','www.bbb.com'),(16,'FNC6','fc6@gmail.com','$2a$10$Ht5jaFt9P5n6/Lhbwd813uFt30dpg6x80KBEm8KYeItR5JTViU1HG','Micky V','1674082522742cover02.jpg','1674084643180av03.jpg','dasd','ddddddsss');
+INSERT INTO `users` VALUES (11,'FNC','fc@gmail.com','$2a$10$JkYTaBxnTg9yHvqH.DCd1u01PpRgGGuLInZpXgd.mf/PmR1RTabBe','Tina Tao','05.jpg','1674092716589blackie.jpg','WRTFFF','www.exampuru.com'),(12,'FNC2','fc2@gmail.com','$2a$10$IB7r0vNBSWpzcRNvZYL7duVACWR6X8uO4F6.dGjP8wGRInfRF/yoK','Fede','01.jpg','1674088510207Fedeperfil.jpeg','US','www.example.com'),(13,'FNC3','fc3@gmail.com','$2a$10$vnt1DhDN3Ed9I0q7IfIu.eTpfo8/2qoqdDgtSbRFBp2bNmazFvKuC','Dahler Mehndi','02.jpg','1674080616758av02.jpeg','Mubahdyayad','www.truluktruluk.dadada'),(14,'FNC4','fc4@gmail.com','$2a$10$YIddeie3CubsDNbqwTJ0HeGbylzFpVTpeMjI3jqd71iYXjChjVFQi','Sasha Grey','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','1674080793202sasha.jpg','NY','www.sasha.com'),(15,'FNC5','fc5@gmail.com','$2a$10$rVrbmrey6FpCmYZBT0z.QOhjK4EePBvT2LBky0gdVtInz1XNtr4M.','Cecille Williams','03.jpg','1674080900660blackie.jpg','Bronx','www.bbb.com'),(16,'FNC6','fc6@gmail.com','$2a$10$Ht5jaFt9P5n6/Lhbwd813uFt30dpg6x80KBEm8KYeItR5JTViU1HG','Micky V','04.jpg','1674084643180av03.jpg','dasd','ddddddsss');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -206,4 +208,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-24 19:16:53
+-- Dump completed on 2023-01-25 13:44:38
