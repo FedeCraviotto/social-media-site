@@ -18,8 +18,8 @@ function Posts({userId}){
     return(
         <div className='posts'>
             {
-            data.map((post,index) => {
-                return <Post post={post} key={post.userName + post.postId + index}/>
+            data.map((post) => {
+                return <Post post={post} key={post.postId}/>
                 })
             }
         </div>

@@ -66,7 +66,7 @@ function Post({post}){
           <div className="user">
             <div className="userInfo">
               <img
-                src={process.env.REACT_APP_URL_FOR_ROOT + post.avatar}
+                src={post.avatar?.includes('http', 0)? post.avatar : process.env.REACT_APP_URL_FOR_ROOT + post.avatar}
                 alt={post.userName}
               />
               <div className="details">
@@ -85,7 +85,7 @@ function Post({post}){
           <div className="content">
             <p>{post.description}</p>
             <img
-              src={process.env.REACT_APP_URL_FOR_ROOT + post.image}
+              src={post.image?.includes('http', 0)? post.image : process.env.REACT_APP_URL_FOR_ROOT + post.image}
               alt={post.userName}
             />
           </div>
@@ -117,7 +117,7 @@ function Post({post}){
             </div>
           </div>
 
-          {commentOpen && <Comments postId={post.postId} />}
+          {commentOpen && <Comments postId={post.postId} commentOpen={commentOpen}/>}
         </div>
       </div>
     );

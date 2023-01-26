@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
-function Comments({ postId }) {
+function Comments({ postId, commentOpen}) {
   const { currentUser } = useContext(AuthContext);
   const [description, setDescription] = useState("");
   const queryClient = useQueryClient();
@@ -45,9 +45,9 @@ function Comments({ postId }) {
         <input type="text" placeholder="Write a comment..." onChange={(e)=>{setDescription(e.target.value)}} value={description} />
         <button onClick={handleClick}>Send</button>
       </div>
-      {data.map((comment, index) => (
+      {data.map((comment) => (
         <Comment
-          key={comment.description + comment.id + index}
+          key={comment.id}
           comment={comment}
         />
       ))}
