@@ -10,7 +10,7 @@ function Comments({ postId, commentOpen}) {
   const [description, setDescription] = useState("");
   const queryClient = useQueryClient();
 
-  const { isLoading, error, data } = useQuery(["comments"], () =>
+  const { isLoading, error, data } = useQuery(["comments", postId], () =>
     makeRequest.get("/comments?postId=" + postId).then((res) => {
       return res.data;
     })

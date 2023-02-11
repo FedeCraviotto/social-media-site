@@ -30,10 +30,13 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Credentials', true); // Allow cookies
     next();
 })
-app.use(express.json());
+
 app.use(cors({
-    origin: 'http://localhost:5000',
+  origin: 'http://localhost:5000',
+  credentials:true,
 }));
+
+app.use(express.json());
 app.use(cookieParser());
 
 app.post('/api/upload', upload.single('image'), (req, res) => {

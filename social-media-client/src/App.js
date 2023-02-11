@@ -9,6 +9,8 @@ import { createBrowserRouter,
    } from 'react-router-dom';
 import { AuthContext } from './context/authContext';
 import { useContext } from 'react';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 function App() {
 
