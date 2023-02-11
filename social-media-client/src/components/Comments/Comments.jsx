@@ -5,11 +5,12 @@ import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
-function Comments({ postId, commentOpen}) {
+function Comments({ postId }) {
   const { currentUser } = useContext(AuthContext);
   const [description, setDescription] = useState("");
   const queryClient = useQueryClient();
 
+  // useQuery(queryKey, queryFn)
   const { isLoading, error, data } = useQuery(["comments", postId], () =>
     makeRequest.get("/comments?postId=" + postId).then((res) => {
       return res.data;
@@ -23,6 +24,9 @@ function Comments({ postId, commentOpen}) {
     {
       onSuccess: () => {
         // Invalidate AND REFRESH
+        // Osea el punto es que, como el usuario realizo cierto cambio, vas a querer indicarle al queryClient
+        // Que cierta quert (en este caso 'comments') realizada con anterioridad ya quedo desactualizada,
+        // y que -por lo tanto- va a tener que hacerla de nuevo (refresh).
         queryClient.invalidateQueries(["comments"]);
       },
     }
@@ -41,7 +45,7 @@ function Comments({ postId, commentOpen}) {
   return (
     <div className="comments">
       <div className="write">
-        <img src={process.env.REACT_APP_URL_FOR_ROOT + currentUser.avatar} alt={currentUser.name} />
+      <img src={currentUser.avatar?.includes('http', 0)? currentUser.avatar : process.env.REACT_APP_URL_FOR_ROOT+ currentUser.avatar} alt={currentUser.name} />
         <input type="text" placeholder="Write a comment..." onChange={(e)=>{setDescription(e.target.value)}} value={description} />
         <button onClick={handleClick}>Send</button>
       </div>
