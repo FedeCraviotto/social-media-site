@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `socialmedia_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `socialmedia_db`;
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: socialmedia_db
+-- Host: 127.0.0.1    Database: socialmedia_db
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,7 +45,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (10,'Peaceful location','2023-01-18 20:45:00',16,17),(11,'Omfg...','2023-01-18 22:04:44',12,19),(12,'Looks nice','2023-01-18 22:06:22',13,17),(13,':D','2023-01-18 22:07:36',14,21),(14,'D:','2023-01-18 22:07:40',14,20),(15,'Yes sir','2023-01-18 22:08:06',14,19),(16,'Mario chomped...','2023-01-18 22:08:15',14,18),(17,'holly Molly','2023-01-18 22:08:41',14,17),(18,'Fresh white meat, yeaa','2023-01-18 22:09:53',15,22),(19,'Nice picture','2023-01-18 22:10:54',15,21),(20,'is that... KapPython?','2023-01-18 22:11:20',15,20),(21,'y ahora','2023-01-18 22:18:00',15,21),(22,'uum','2023-01-18 22:45:21',14,24),(23,'What a joke','2023-01-18 22:46:38',12,24),(24,'Suturittsu','2023-01-18 22:46:48',12,23),(25,'Looks pretty gay','2023-01-18 22:47:01',12,22),(26,'Code this .i.','2023-01-18 22:47:08',12,20),(27,'','2023-01-19 00:49:29',12,21);
+INSERT INTO `comments` VALUES (10,'Peaceful location','2023-01-18 20:45:00',16,17),(11,'Omfg...','2023-01-18 22:04:44',12,19),(12,'Looks nice','2023-01-18 22:06:22',13,17),(13,':D','2023-01-18 22:07:36',14,21),(14,'D:','2023-01-18 22:07:40',14,20),(15,'Yes sir','2023-01-18 22:08:06',14,19),(16,'Mario chomped...','2023-01-18 22:08:15',14,18),(17,'holly Molly','2023-01-18 22:08:41',14,17),(18,'That\'s a good one','2023-03-13 13:18:18',15,22),(19,'Nice picture','2023-01-18 22:10:54',15,21),(20,'is that... KapPython?','2023-01-18 22:11:20',15,20),(21,'y ahora','2023-01-18 22:18:00',15,21),(22,'uum','2023-01-18 22:45:21',14,24),(23,'What a joke','2023-01-18 22:46:38',12,24),(24,'Suturittsu','2023-01-18 22:46:48',12,23),(25,'Looks pretty nice','2023-03-13 13:18:18',12,22),(26,'Huge improvements','2023-03-13 13:18:18',12,20),(27,'Does it works?','2023-03-13 13:18:18',12,21);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `likes` (
   KEY `likes_postId_idx` (`postId`),
   CONSTRAINT `likes_postId` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `likes_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (17,16,'Good morning','05.jpg','2023-01-26 11:32:30'),(18,12,'Mountains','05.jpg','2023-01-26 11:32:30'),(19,12,'Sasha it\'s you?','02.jpg','2023-01-26 11:32:30'),(20,14,'Computers','05.jpg','2023-01-26 11:32:30'),(21,14,'Montains','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','2023-01-26 11:32:30'),(22,15,'Yea brah','01.jpg','2023-01-26 11:32:30'),(23,15,'Rap is the Poetry of the streets nigga','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','2023-01-26 11:32:30'),(24,14,'Whattabout na?','05.jpg','2023-01-26 11:32:30'),(25,11,'Lamuerrrrrte','01.jpg','2023-01-26 11:32:30');
+INSERT INTO `posts` VALUES (17,16,'Good morning','https://images.pexels.com/photos/236171/pexels-photo-236171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(18,12,'Mountains','https://images.pexels.com/photos/982263/pexels-photo-982263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(19,12,'Sasha it\'s you?','https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(20,14,'Computers','https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(21,14,'Montains','https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg','2023-03-13 13:16:56'),(22,15,'Yea brah','https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(23,15,'Rap is the Poetry of the streets','https://images.pexels.com/photos/730981/pexels-photo-730981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(24,14,'Whattabout na?','https://images.pexels.com/photos/3229452/pexels-photo-3229452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56'),(25,11,'Lamuerrrrrte','https://images.pexels.com/photos/12228827/pexels-photo-12228827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','2023-03-13 13:16:56');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +195,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (11,'FNC','fc@gmail.com','$2a$10$JkYTaBxnTg9yHvqH.DCd1u01PpRgGGuLInZpXgd.mf/PmR1RTabBe','Tina Tao','05.jpg','05.jpg','WRTFFF','www.exampuru.com'),(12,'FNC2','fc2@gmail.com','$2a$10$IB7r0vNBSWpzcRNvZYL7duVACWR6X8uO4F6.dGjP8wGRInfRF/yoK','Fede','01.jpg','01.jpg','US','www.example.com'),(13,'FNC3','fc3@gmail.com','$2a$10$vnt1DhDN3Ed9I0q7IfIu.eTpfo8/2qoqdDgtSbRFBp2bNmazFvKuC','Dahler Mehndi','02.jpg','02.jpg','Mubahdyayad','www.truluktruluk.dadada'),(14,'FNC4','fc4@gmail.com','$2a$10$YIddeie3CubsDNbqwTJ0HeGbylzFpVTpeMjI3jqd71iYXjChjVFQi','Sasha Grey','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','NY','www.sasha.com'),(15,'FNC5','fc5@gmail.com','$2a$10$rVrbmrey6FpCmYZBT0z.QOhjK4EePBvT2LBky0gdVtInz1XNtr4M.','Cecille Williams','03.jpg','03.jpg','Bronx','www.bbb.com'),(16,'FNC6','fc6@gmail.com','$2a$10$Ht5jaFt9P5n6/Lhbwd813uFt30dpg6x80KBEm8KYeItR5JTViU1HG','Micky V','04.jpg','04.jpg','dasd','ddddddsss');
+INSERT INTO `users` VALUES (11,'FNC','fc@gmail.com','$2a$10$JkYTaBxnTg9yHvqH.DCd1u01PpRgGGuLInZpXgd.mf/PmR1RTabBe','Tina Tao','05.jpg','https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','WRTFFF','www.exampuru.com'),(12,'FNC2','fc2@gmail.com','$2a$10$IB7r0vNBSWpzcRNvZYL7duVACWR6X8uO4F6.dGjP8wGRInfRF/yoK','Fede','01.jpg','https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','US','www.example.com'),(13,'FNC3','fc3@gmail.com','$2a$10$vnt1DhDN3Ed9I0q7IfIu.eTpfo8/2qoqdDgtSbRFBp2bNmazFvKuC','Dahler Mehndi','02.jpg','https://images.pexels.com/photos/2994869/pexels-photo-2994869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','Mubahdyayad','www.truluktruluk.dadada'),(14,'FNC4','fc4@gmail.com','$2a$10$YIddeie3CubsDNbqwTJ0HeGbylzFpVTpeMjI3jqd71iYXjChjVFQi','Sasha Grey','https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png','https://images.pexels.com/photos/3522693/pexels-photo-3522693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','NY','www.sasha.com'),(15,'FNC5','fc5@gmail.com','$2a$10$rVrbmrey6FpCmYZBT0z.QOhjK4EePBvT2LBky0gdVtInz1XNtr4M.','Cecille Williams','03.jpg','https://images.pexels.com/photos/819530/pexels-photo-819530.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','Bronx','www.bbb.com'),(16,'FNC6','fc6@gmail.com','$2a$10$Ht5jaFt9P5n6/Lhbwd813uFt30dpg6x80KBEm8KYeItR5JTViU1HG','Micky V','04.jpg','https://images.pexels.com/photos/886285/pexels-photo-886285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','dasd','ddddddsss');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -208,4 +208,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-26 12:18:45
+-- Dump completed on 2023-03-13 13:18:55
