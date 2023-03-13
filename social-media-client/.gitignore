@@ -6,7 +6,7 @@
 .pnp.js
 
 #Enviroment
-# .env
+.env
 
 # Images
 # /public/upload
