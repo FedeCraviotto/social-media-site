@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use((req, res, next) => {
